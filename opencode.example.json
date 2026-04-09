@@ -1,0 +1,68 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "~/.config/opencode/workflows/workflow-heuristica.md",
+    "~/.config/opencode/workflows/workflow-benchmark.md",
+    "~/.config/opencode/workflows/workflow-discovery.md",
+    "~/.config/opencode/workflows/workflow-design-sprint.md"
+  ],
+  "mcp": {
+    "paper": {
+      "type": "remote",
+      "url": "http://127.0.0.1:29979/mcp",
+      "enabled": true
+    },
+    "figma": {
+      "type": "remote",
+      "url": "http://127.0.0.1:3845/mcp",
+      "enabled": true
+    },
+    "atlassian-rovo": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp",
+      "enabled": true,
+      "headers": {
+        "Accept": "application/json, text/event-stream"
+      }
+    },
+    "github": {
+      "type": "local",
+      "command": [
+        "docker", "run", "-i", "--rm",
+        "-e", "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PAT}"
+      },
+      "enabled": true
+    },
+    "agent-memory-store": {
+      "type": "local",
+      "command": ["npx", "-y", "agent-memory-store"],
+      "enabled": true
+    }
+  },  
+  "permission": {
+      "bash": {
+        "~/projects/**": "allow",
+        "~/insumos/**": "allow",
+        "~/files/**": "allow"
+      },
+      "write": {
+        "~/projects/**": "allow",
+        "~/insumos/**": "allow",
+        "~/files/**": "allow"
+      },
+      "read": {
+        "*": "allow",
+        "*.env": "deny",
+        "*.env.*": "deny"
+      }
+    },
+    "agent": {
+      "lotus-builder": {
+        "mode": "primary"
+    }
+  }
+}
