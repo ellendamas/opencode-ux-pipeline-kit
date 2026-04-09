@@ -20,12 +20,34 @@ chmod +x install.sh
 ./install.sh
 ```
 
+### Instalar sem sobrescrever nada que ele ja tenha
+
+Este modo apenas complementa o ambiente com arquivos novos do kit:
+
+```bash
+./install.sh --no-overwrite
+```
+
+Comportamento do modo complementar:
+
+- nao sobrescreve agentes existentes
+- nao sobrescreve skills existentes
+- nao sobrescreve workflows existentes
+- mantem `AGENTS.md` atual se ja existir
+- nao altera `opencode.json` existente
+
 ### Instalar também configuração base (`opencode.json`)
 
 Use apenas se a pessoa quiser substituir o `~/.config/opencode/opencode.json` atual:
 
 ```bash
 ./install.sh --with-config
+```
+
+Para complementar sem sobrescrever e ainda instalar `opencode.json` apenas se ele nao existir:
+
+```bash
+./install.sh --no-overwrite --with-config
 ```
 
 ## Atualização

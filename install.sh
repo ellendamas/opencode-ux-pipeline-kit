@@ -2,9 +2,23 @@
 set -euo pipefail
 
 WITH_CONFIG="false"
-if [[ "${1:-}" == "--with-config" ]]; then
-  WITH_CONFIG="true"
-fi
+NO_OVERWRITE="false"
+
+for arg in "$@"; do
+  case "$arg" in
+    --with-config)
+      WITH_CONFIG="true"
+      ;;
+    --no-overwrite)
+      NO_OVERWRITE="true"
+      ;;
+    *)
+      echo "Parametro invalido: $arg"
+      echo "Uso: ./install.sh [--with-config] [--no-overwrite]"
+      exit 1
+      ;;
+  esac
+done
 
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TARGET_DIR="$HOME/.config/opencode"
@@ -38,14 +52,34 @@ fi
 echo "==> Instalando pacote no OpenCode"
 mkdir -p "$TARGET_DIR/agents" "$TARGET_DIR/skills" "$TARGET_DIR/workflows"
 
-cp -R "$SRC_DIR/agents/." "$TARGET_DIR/agents/"
-cp -R "$SRC_DIR/skills/." "$TARGET_DIR/skills/"
-cp -R "$SRC_DIR/workflows/." "$TARGET_DIR/workflows/"
-cp "$SRC_DIR/AGENTS.md" "$TARGET_DIR/AGENTS.md"
+if [[ "$NO_OVERWRITE" == "true" ]]; then
+  echo "==> Modo complementar ativo: nao sobrescrever arquivos existentes"
+  rsync -a --ignore-existing "$SRC_DIR/agents/" "$TARGET_DIR/agents/"
+  rsync -a --ignore-existing "$SRC_DIR/skills/" "$TARGET_DIR/skills/"
+  rsync -a --ignore-existing "$SRC_DIR/workflows/" "$TARGET_DIR/workflows/"
 
-if [[ "$WITH_CONFIG" == "true" ]]; then
+  if [[ -f "$TARGET_DIR/AGENTS.md" ]]; then
+    echo "==> AGENTS.md ja existe, mantendo o arquivo atual"
+  else
+    cp "$SRC_DIR/AGENTS.md" "$TARGET_DIR/AGENTS.md"
+  fi
+else
+  cp -R "$SRC_DIR/agents/." "$TARGET_DIR/agents/"
+  cp -R "$SRC_DIR/skills/." "$TARGET_DIR/skills/"
+  cp -R "$SRC_DIR/workflows/." "$TARGET_DIR/workflows/"
+  cp "$SRC_DIR/AGENTS.md" "$TARGET_DIR/AGENTS.md"
+fi
+
+if [[ "$WITH_CONFIG" == "true" && "$NO_OVERWRITE" == "false" ]]; then
   echo "==> Instalando configuração base em $TARGET_DIR/opencode.json"
   cp "$SRC_DIR/opencode.example.json" "$TARGET_DIR/opencode.json"
+elif [[ "$WITH_CONFIG" == "true" && "$NO_OVERWRITE" == "true" ]]; then
+  if [[ -f "$TARGET_DIR/opencode.json" ]]; then
+    echo "==> --with-config + --no-overwrite: mantendo opencode.json atual"
+  else
+    cp "$SRC_DIR/opencode.example.json" "$TARGET_DIR/opencode.json"
+    echo "==> opencode.json instalado (arquivo nao existia)"
+  fi
 else
   echo "==> Configuração base não instalada (use --with-config se quiser sobrescrever opencode.json)"
 fi
