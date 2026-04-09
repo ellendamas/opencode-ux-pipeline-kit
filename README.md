@@ -78,3 +78,4 @@ Leia:
 
 - `docs/GUIA-PIPELINE.md`
 - `docs/CATALOGO-AGENTES-SKILLS.md`
+- `docs/USO-DIARIO.md`
