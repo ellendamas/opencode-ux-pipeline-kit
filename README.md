@@ -11,7 +11,7 @@ Pacote pronto para compartilhar seus agentes, skills e workflows de UX no OpenCo
 - `docs/`: guias de operação e mapeamento
 - `opencode.example.json`: exemplo de configuração base do OpenCode
 
-## Instalação rápida (colega designer)
+## Instalação rápida
 
 ```bash
 git clone https://github.com/ellendamas/opencode-ux-pipeline-kit.git
@@ -20,7 +20,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-### Instalar sem sobrescrever nada que ele ja tenha
+### Instalar sem sobrescrever nada que já exista
 
 Este modo apenas complementa o ambiente com arquivos novos do kit:
 
