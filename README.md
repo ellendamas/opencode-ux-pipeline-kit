@@ -2,6 +2,19 @@
 
 Pacote pronto para compartilhar seus agentes, skills e workflows de UX no OpenCode.
 
+---
+
+## 📚 Documentação
+
+| Guia | Descrição |
+|------|-----------|
+| [Guia do Pipeline](docs/GUIA-PIPELINE.md) | Arquitetura, workflows, Jira flow, regras operacionais |
+| [Uso Diário](docs/USO-DIARIO.md) | Fluxos mais comuns, como escolher agentes, checklist |
+| [Catálogo](docs/CATALOGO-AGENTES-SKILLS.md) | O que cada agente e skill faz |
+| [Changelog](CHANGELOG.md) | Histórico de versões e mudanças |
+
+---
+
 ## O que vem neste repositório
 
 - `agents/`: 26 agentes especializados (inclui `ux-orchestrator` como agente primário)
@@ -14,6 +27,8 @@ Pacote pronto para compartilhar seus agentes, skills e workflows de UX no OpenCo
 - `docs/`: guias de operação e mapeamento
 - `CHANGELOG.md`: histórico de mudanças do kit
 - `opencode.example.json`: exemplo de configuração base do OpenCode
+
+---
 
 ## Instalação rápida
 
@@ -79,11 +94,4 @@ O instalador cria backup antes de sobrescrever:
 
 - `~/.config/opencode-backups/ux-pipeline-<timestamp>/`
 
-## Guia completo do processo
-
-Leia:
-
-- `docs/GUIA-PIPELINE.md`
-- `docs/CATALOGO-AGENTES-SKILLS.md`
-- `docs/USO-DIARIO.md`
-- `CHANGELOG.md`
+---
