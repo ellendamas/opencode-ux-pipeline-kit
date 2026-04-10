@@ -1,0 +1,10 @@
+status,event_name,flow_type,type,target,parametros,description,label,notes
+production,a_contrata-facil_subheader_new_link,Dashboard,,,,"Botão ""Novo link""",,
+production,a_contrata-facil_subheader_links,,,,,"Botão ""Links""",,
+mapping,a_contrata-facil_send-whatsapp,Dashboard,eventId,<a>,"LinkId
+LinkStatus","Botão ""Enviar por WhatsApp""",,
+mapping,a_contrata-facil_copy-link,Dashboard,,,"LinkId
+LinkStatus","Botão ""Copiar link""",,
+mapping,a_contrata-facil_pause,Dashboard,,,True or False,"Botão ""Pausar""",,
+mapping,a_contrata-facil_delete,Dashboard,,,"LinkId
+LinkStatus","Botão ""Excluir""",,

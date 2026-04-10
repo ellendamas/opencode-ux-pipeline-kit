@@ -41,6 +41,18 @@ if [[ -d "$TARGET_DIR/workflows" ]]; then
   cp -R "$TARGET_DIR/workflows" "$BACKUP_DIR/workflows"
 fi
 
+if [[ -d "$TARGET_DIR/templates" ]]; then
+  cp -R "$TARGET_DIR/templates" "$BACKUP_DIR/templates"
+fi
+
+if [[ -d "$TARGET_DIR/prompts" ]]; then
+  cp -R "$TARGET_DIR/prompts" "$BACKUP_DIR/prompts"
+fi
+
+if [[ -d "$TARGET_DIR/datasets" ]]; then
+  cp -R "$TARGET_DIR/datasets" "$BACKUP_DIR/datasets"
+fi
+
 if [[ -f "$TARGET_DIR/AGENTS.md" ]]; then
   cp "$TARGET_DIR/AGENTS.md" "$BACKUP_DIR/AGENTS.md"
 fi
@@ -50,13 +62,16 @@ if [[ -f "$TARGET_DIR/opencode.json" ]]; then
 fi
 
 echo "==> Instalando pacote no OpenCode"
-mkdir -p "$TARGET_DIR/agents" "$TARGET_DIR/skills" "$TARGET_DIR/workflows"
+mkdir -p "$TARGET_DIR/agents" "$TARGET_DIR/skills" "$TARGET_DIR/workflows" "$TARGET_DIR/templates" "$TARGET_DIR/prompts" "$TARGET_DIR/datasets"
 
 if [[ "$NO_OVERWRITE" == "true" ]]; then
   echo "==> Modo complementar ativo: nao sobrescrever arquivos existentes"
   rsync -a --ignore-existing "$SRC_DIR/agents/" "$TARGET_DIR/agents/"
   rsync -a --ignore-existing "$SRC_DIR/skills/" "$TARGET_DIR/skills/"
   rsync -a --ignore-existing "$SRC_DIR/workflows/" "$TARGET_DIR/workflows/"
+  rsync -a --ignore-existing "$SRC_DIR/templates/" "$TARGET_DIR/templates/"
+  rsync -a --ignore-existing "$SRC_DIR/prompts/" "$TARGET_DIR/prompts/"
+  rsync -a --ignore-existing "$SRC_DIR/datasets/" "$TARGET_DIR/datasets/"
 
   if [[ -f "$TARGET_DIR/AGENTS.md" ]]; then
     echo "==> AGENTS.md ja existe, mantendo o arquivo atual"
@@ -67,6 +82,9 @@ else
   cp -R "$SRC_DIR/agents/." "$TARGET_DIR/agents/"
   cp -R "$SRC_DIR/skills/." "$TARGET_DIR/skills/"
   cp -R "$SRC_DIR/workflows/." "$TARGET_DIR/workflows/"
+  cp -R "$SRC_DIR/templates/." "$TARGET_DIR/templates/"
+  cp -R "$SRC_DIR/prompts/." "$TARGET_DIR/prompts/"
+  cp -R "$SRC_DIR/datasets/." "$TARGET_DIR/datasets/"
   cp "$SRC_DIR/AGENTS.md" "$TARGET_DIR/AGENTS.md"
 fi
 
@@ -87,10 +105,16 @@ fi
 AGENT_COUNT="$(ls -1 "$TARGET_DIR/agents"/*.md 2>/dev/null | wc -l | tr -d ' ')"
 WORKFLOW_COUNT="$(ls -1 "$TARGET_DIR/workflows"/*.md 2>/dev/null | wc -l | tr -d ' ')"
 SKILL_COUNT="$(ls -1 "$TARGET_DIR/skills"/*/SKILL.md 2>/dev/null | wc -l | tr -d ' ')"
+TEMPLATE_COUNT="$(ls -1 "$TARGET_DIR/templates"/*.md 2>/dev/null | wc -l | tr -d ' ')"
+PROMPT_COUNT="$(ls -1 "$TARGET_DIR/prompts"/*.md 2>/dev/null | wc -l | tr -d ' ')"
+DATASET_COUNT="$(ls -1 "$TARGET_DIR/datasets/event-mapping"/*.csv 2>/dev/null | wc -l | tr -d ' ')"
 
 echo ""
 echo "Instalacao concluida com sucesso."
 echo "- Agentes instalados:   $AGENT_COUNT"
 echo "- Skills instaladas:    $SKILL_COUNT"
 echo "- Workflows instalados: $WORKFLOW_COUNT"
+echo "- Templates instalados: $TEMPLATE_COUNT"
+echo "- Prompts instalados:   $PROMPT_COUNT"
+echo "- Datasets instalados:  $DATASET_COUNT"
 echo "- Backup salvo em:      $BACKUP_DIR"

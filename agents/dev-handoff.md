@@ -119,7 +119,7 @@ Nenhum handoff sai sem critérios de aceite mensuráveis. "Ficou igual ao Figma"
 ---
 agent: dev-handoff
 project: [nome]
-design_brief_id: [ex: AIPT-42-DB-01]
+design_brief_id: [ex: AIDESIGN-42-DB-01]
 mode: handoff | review
 destination: lotus-builder | engineering | review-lotus | review-engineering
 design_system: lotus-plus | custom | n/a

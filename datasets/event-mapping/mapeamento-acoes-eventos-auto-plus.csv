@@ -1,0 +1,5 @@
+status,event_name,flow_type,type,target,parametros,description,label,notes
+production,a_car-equity_subheader_car-equity/propostas,,,,,"Botão ""Propostas""",,
+production,a_car-equity_subheader_car-equity/comissoes,,,,,"Botão ""Comissões""",,
+mapping,button_car-equity_proposals-export,,,,,"Botão ""Exportar""",,
+production,a_dashboard_subheader_car-equity-nova/new,,,,,"Botão ""Nova Proposta""",,Deveria ser: a_banner_saquefacil_roleta_premiada

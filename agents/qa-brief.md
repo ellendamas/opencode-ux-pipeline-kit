@@ -39,7 +39,7 @@ Se sim → prossiga.
 
 ```
 [ÉPICO-ID]-QB-[número sequencial]
-Exemplo: AIPT-42-QB-01
+Exemplo: AIDESIGN-42-QB-01
 ```
 
 - `QB` = QA Brief
@@ -55,7 +55,7 @@ Exemplo: AIPT-42-QB-01
 Via MCP `atlassian-rovo`, busque a Task do Design Brief pelo ID informado:
 
 ```
-□ Título e ID do Design Brief (ex: AIPT-42-DB-01)
+□ Título e ID do Design Brief (ex: AIDESIGN-42-DB-01)
 □ Conteúdo completo da descrição (comportamentos, microcopy, specs, decisões)
 □ Respostas do PO às questões em aberto (comentários ou edições na Task)
 □ Links do Figma com todos os frames por estado
@@ -306,9 +306,9 @@ Cenário: [nome]
 ---
 agent: qa-brief
 project: [nome]
-epic_id: [ex: AIPT-42]
-brief_id: [ex: AIPT-42-QB-01]
-design_brief_ref: [ex: AIPT-42-DB-01]
+epic_id: [ex: AIPRODUCT-42]
+brief_id: [ex: AIDESIGN-42-QB-01]
+design_brief_ref: [ex: AIDESIGN-42-DB-01]
 screen: [nome da tela]
 jira_task_url: [link da task criada]
 user_stories: [n]

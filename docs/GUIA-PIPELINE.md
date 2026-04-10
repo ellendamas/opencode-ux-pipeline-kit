@@ -44,7 +44,7 @@ data-normalizer -> prototype-testing -> ux-pitch
 - Sempre gerar `journey-spec.md` para tela nova/alterada.
 - `journey-spec.md` deve conter taxonomia Amplitude com `event_name` em `snake_case`.
 
-## 5) Fluxo Jira (AIPT)
+## 5) Fluxo Jira (AIPRODUCT <-> AIDESIGN)
 
 Sequencia esperada:
 
@@ -61,8 +61,15 @@ Regras:
 
 - Nao pular direto para `Itens concluidos`.
 - Em mudanca de tela/jornada, anexar `journey-spec.md` antes de `Revisao Product`.
+- Nao criar ou mover issues no `AIPRODUCT` sem solicitacao explicita de PM/PO.
 
-## 6) Handoffs entre agentes
+## 6) Estrutura de artefatos de apoio
+
+- `templates/`: modelos oficiais reutilizaveis.
+- `prompts/`: prompts operacionais versionados.
+- `datasets/event-mapping/`: mapeamentos CSV de eventos.
+
+## 7) Handoffs entre agentes
 
 Padroes usados:
 
@@ -70,7 +77,7 @@ Padroes usados:
 - Handoff com revisao: um agente critica output do outro antes de consolidar.
 - Consolidacao obrigatoria: sempre que 2+ agentes produzirem material, passar por `data-normalizer`.
 
-## 7) Como iniciar uma demanda nova
+## 8) Como iniciar uma demanda nova
 
 1. Definir projeto ativo.
 2. Entregar briefing para `ux-orchestrator`.
@@ -79,7 +86,7 @@ Padroes usados:
 5. Consolidar output final.
 6. Se necessario para stakeholder, finalizar com `ux-pitch`.
 
-## 8) Qualidade minima esperada
+## 9) Qualidade minima esperada
 
 - Evidencia clara para cada recomendacao.
 - Sem contradicoes nao resolvidas entre agentes.

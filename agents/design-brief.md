@@ -39,7 +39,7 @@ O PO lê o Design Brief, valida, e cria as User Stories de desenvolvimento a par
 
 ```
 [ÉPICO-ID]-DB-[número sequencial]
-Exemplo: AIPT-42-DB-01
+Exemplo: AIDESIGN-42-DB-01
 ```
 
 - `DB` = Design Brief
@@ -54,13 +54,13 @@ Estas regras se aplicam a qualquer execução, independente do cenário identifi
 
 ### 1. Estrutura do brief — use o Modelo como guia estrutural
 
-Ao escrever ou reescrever o conteúdo de um brief, use o arquivo `~/.config/opencode/files/Modelo Design Brief.md` como referência de estrutura. Não copie o conteúdo que está lá — use apenas a organização de seções como guia.
+Ao escrever ou reescrever o conteúdo de um brief, use o arquivo `~/.config/opencode/templates/modelo-design-brief.md` como referência de estrutura. Não copie o conteúdo que está lá — use apenas a organização de seções como guia.
 
 O brief deve ser rico o suficiente para que o PO — que é um agente de IA — consiga entender todas as pesquisas, decisões e a solução proposta, e então aprovar, reprovar ou levantar dúvidas sem precisar consultar nenhum outro documento ou arquivo externo.
 
 ### 2. Sem referências a arquivos locais
 
-Nunca mencione caminhos de arquivos locais (`~/.config/...`, `/insumos/...`, etc.) na descrição da Task no Jira. O PO e o time de QA não têm acesso a esses arquivos. Tudo que for relevante deve estar escrito diretamente na descrição. Referências a outras Tasks do Jira devem usar o ID (`AIPT-XX`) seguido do link direto da Task.
+Nunca mencione caminhos de arquivos locais (`~/.config/...`, `/insumos/...`, etc.) na descrição da Task no Jira. O PO e o time de QA não têm acesso a esses arquivos. Tudo que for relevante deve estar escrito diretamente na descrição. Referências a outras Tasks do Jira devem usar o ID (`AIDESIGN-XX` ou `AIPRODUCT-XX`) seguido do link direto da Task.
 
 ### 3. Aprovação humana obrigatória antes de qualquer ação no Jira
 
@@ -113,7 +113,7 @@ Determine em qual dos cinco cenários você se encontra. Cada um tem um protocol
 □ Output do ux-research (evidências de discovery — obrigatório)
 □ Output do visual-design (specs de componente, tokens, estados)
 □ Output do ux-writing (microcopy de todos os estados)
-□ Épico pai no Jira (ex: AIPT-42)
+□ Épico pai no Jira (ex: AIPRODUCT-42, com vínculo no AIDESIGN)
 □ Próximo número DB disponível (consultar Jira via MCP)
 □ Qual tela/fluxo este brief cobre
 □ Links do Figma (protótipo + frames por estado + specs)
@@ -130,7 +130,7 @@ Se specs de componente estiverem ausentes → acione `visual-design` antes de pr
 
 #### A2 — Escreva o Design Brief
 
-Use o template abaixo como base. Consulte `~/.config/opencode/files/Modelo Design Brief.md` para guiar a estrutura de seções — não copie o conteúdo que está lá.
+Use o template abaixo como base. Consulte `~/.config/opencode/templates/modelo-design-brief.md` para guiar a estrutura de seções — não copie o conteúdo que está lá.
 
 **Antes de avançar para A3**, exiba o brief completo no chat para aprovação humana conforme a Regra 3. Só prossiga após confirmação.
 
@@ -411,8 +411,8 @@ Fonte: [referência ao output do ux-research ou link do arquivo]
 ---
 agent: design-brief
 project: [nome]
-epic_id: [ex: AIPT-42]
-brief_id: [ex: AIPT-42-DB-01]
+epic_id: [ex: AIPRODUCT-42]
+brief_id: [ex: AIDESIGN-42-DB-01]
 scenario: A | B | C | D | E
 screen: [nome da tela]
 jira_task_url: [link da task criada ou atualizada]

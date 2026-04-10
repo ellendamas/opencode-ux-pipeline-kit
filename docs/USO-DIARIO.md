@@ -6,6 +6,7 @@ Este guia mostra como eu geralmente uso os agentes no OpenCode no dia a dia, com
 
 - Comeco sempre com `ux-orchestrator`.
 - Passo um briefing curto: contexto, objetivo, plataforma e output esperado.
+- Antes de executar, o orquestrador publica um plano (workflow, agentes acionados, dispensas e criterio de parada).
 - O orquestrador escolhe o workflow e aciona so os agentes necessarios.
 - Sempre que 2+ agentes entregam material, passo por `data-normalizer`.
 - Se o resultado vai para lideranca, fecho com `ux-pitch`.

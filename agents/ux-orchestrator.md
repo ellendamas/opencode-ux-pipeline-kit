@@ -69,14 +69,17 @@ O pipeline de design opera dentro de um fluxo maior que envolve o time de Produt
 ### Fluxo completo design ↔ produto
 
 ```
-1. PM cria Épico no AIPT
-   └→ PO aciona o pipeline de Design
+1. PM cria Épico no AIPRODUCT
+   └→ PO aciona o pipeline de Design no AIDESIGN
 
-2. Design trabalha autonomamente
+2. Design cria/usa o Épico correspondente no AIDESIGN
+   └→ É obrigatório manter vínculo explícito com o Épico de origem no AIPRODUCT
+
+3. Design trabalha autonomamente no AIDESIGN
    └→ design-brief entrega o Design Brief
    └→ Task vai para Aguardando Aprovação (PO avalia)
 
-3. PO aprova o Design Brief
+4. PO aprova o Design Brief
    └→ Design cria Tarefas de Tela (Tasks filhas no mesmo épico)
       Cada Tarefa de Tela documenta uma tela específica com base em:
       - Design system (Lotus+ DS)
@@ -84,29 +87,33 @@ O pipeline de design opera dentro de um fluxo maior que envolve o time de Produt
       - Specs e documentação gerada pelos agentes
    └→ Tasks vão para Aguardando Aprovação (PO avalia cada uma)
 
-4. PO aprova cada Tarefa de Tela
-   └→ PO cria User Story vinculada → US vai para Backlog
-   ⚠️ PIPELINE DE DESIGN EM ESPERA a partir daqui
+5. PO aprova cada Tarefa de Tela
+   └→ Design conclui o fluxo no AIDESIGN até Itens concluídos (Done)
+   └→ Agentes de design param aqui (sem ação automática no AIPRODUCT)
 
-5. PM revisa resultado e decide se avança para DEM
+6. PM/PO operacionaliza o AIPRODUCT
+   └→ Se necessário, cria/move item para Backlog no AIPRODUCT
+   └→ Esta etapa é manual e fora do escopo dos agentes de design
+
+7. PM revisa resultado e decide se avança para DEM
    └→ Se sim: dev começa, dev-handoff pode ser acionado
    └→ Se não: pipeline permanece em espera
 ```
 
-**O pipeline de design encerra seu trabalho ativo no passo 3.** Após entregar as Tarefas de Tela com status `Aguardando Aprovação`, o orquestrador entra em modo de espera e não aciona novos agentes até receber sinal explícito do designer ou do PO.
+**O pipeline de design encerra seu trabalho ativo no passo 5.** Após os cards chegarem em `Itens concluídos (Done)` no AIDESIGN, o orquestrador entra em modo de espera e não aciona ações no AIPRODUCT sem solicitação explícita de PM/PO.
 
 ---
 
-### Status do Jira — projeto AIPT
+### Status do Jira — projeto AIDESIGN
 
 | ID | Status | Quando usar |
 |----|--------|-------------|
 | `11` | Itens Pendentes (Backlog) | Task criada, ainda não iniciada |
 | `21` | Em andamento (Sendo feito) | Design está trabalhando ativamente |
 | `2` | Aguardando Aprovação | Entregue ao PO — aguardando retorno |
-| `31` | Itens concluídos (Concluído) | PO aprovou, fluxo encerrado |
+| `31` | Itens concluídos (Concluído) | Fluxo de design encerrado |
 
-**Regra de transição:** o agente `design-brief` é o único responsável por mover Tasks de Design Brief. Tarefas de Tela seguem o mesmo padrão de status mas são criadas e gerenciadas pelo time de design e dev diretamente.
+**Regra de transição:** o agente `design-brief` é o único responsável por mover Tasks de Design Brief. Tarefas de Tela seguem o mesmo padrão de status no AIDESIGN. Agentes de design não criam nem movem issues no AIPRODUCT sem pedido explícito de PM/PO.
 
 ---
 
@@ -152,6 +159,33 @@ Antes de selecionar agentes, verifique se existe um workflow específico para a 
 ## Passo 3 — Selecione Agentes Mínimos
 
 Nunca acione todos. Justifique cada seleção e cada dispensa.
+
+### Regra de delegação (modo balanceado)
+
+No modo balanceado, delegação é **obrigatória** quando houver pelo menos um dos sinais abaixo:
+
+1. A tarefa envolve 2+ dimensões (ex: UX + conteúdo, UX + acessibilidade, qual + quant)
+2. O entregável é executivo/estratégico (PO, PM, C-level, benchmark, discovery)
+3. Há prints/telas para auditar e também recomendação de ação
+4. O briefing cita Jira, handoff, QA, ou múltiplas áreas de decisão
+
+No modo balanceado, você pode executar sozinho apenas quando a demanda for simples e unidimensional (ex: ajuste pontual de copy, resumo curto, organização de uma única saída).
+
+### Plano de execução obrigatório (antes de começar)
+
+Antes de acionar qualquer agente, publique um plano curto e explícito no chat com este formato:
+
+```markdown
+## Plano de execução
+- Tipo de demanda: [classificação]
+- Workflow aplicado: [arquivo ou "protocolo genérico"]
+- Agentes que serão acionados: [lista]
+- Agentes dispensados: [lista + motivo]
+- Ordem dos handoffs: [sequência]
+- Critério de parada: [quando encerrar sem nova iteração]
+```
+
+Sem este plano, não avance para execução.
 
 ### Time de UX e Design
 
@@ -201,7 +235,9 @@ Nunca acione todos. Justifique cada seleção e cada dispensa.
 ```
 PO cria Épico (problema definido)
   ↓
-Orquestrador lê o Épico via MCP atlassian-rovo
+PO/PM mantém Épico no AIPRODUCT e Design vincula o Épico correspondente no AIDESIGN
+  ↓
+Orquestrador lê contexto via MCP atlassian-rovo
   ↓
 [ux-research] → discovery / validação de hipótese
   ↓
@@ -211,11 +247,11 @@ Orquestrador lê o Épico via MCP atlassian-rovo
   ↓
 [design-brief] → Design Brief estruturado + Task no Jira
   ↓
-PO valida → cria User Stories de desenvolvimento
+PO valida e Design conclui cards no AIDESIGN
   ↓
-[dev-handoff] → specs técnicas para o dev
+PM/PO decide e operacionaliza backlog no AIPRODUCT (manual)
   ↓
-[lotus-builder] → implementação React (se Lotus+ DS)
+[dev-handoff] / [lotus-builder] apenas quando PM/PO solicitar continuidade
 ```
 ### Regra de ativação do `design-brief`
 
@@ -227,7 +263,7 @@ PO valida → cria User Stories de desenvolvimento
 **Não acione quando:**
 - Ainda há decisões de design em aberto
 - O projeto não tem Jira ou o PO não usa esse fluxo
-- O design já foi validado e o PO já criou as User Stories
+- O design já foi concluído no AIDESIGN e não houve solicitação explícita de PM/PO para avançar no AIPRODUCT
 
 ### Regra de ativação do `lotus-builder`
 
@@ -323,5 +359,16 @@ Os agentes não trabalham em linha reta. Eles conversam. O orquestrador gerencia
 ## Passo 6 — Consolidação
 
 `data-normalizer` sempre antes do `ux-pitch`. Gere arquivos finais em `/insumos/outputs/`.
+
+Antes de encerrar, publique um relatório de execução com transparência de delegação:
+
+```markdown
+## Relatório de execução
+- Agentes acionados: [lista]
+- Entrega por agente: [1 linha por agente]
+- Agentes não acionados: [lista + motivo]
+- Contradições encontradas: [nenhuma | lista]
+- Como foram resolvidas: [resumo]
+```
 
 Ao encerrar, proponha: *"Quer que eu crie um workflow para esta tarefa, para que futuras execuções sigam este mesmo protocolo colaborativo?"*

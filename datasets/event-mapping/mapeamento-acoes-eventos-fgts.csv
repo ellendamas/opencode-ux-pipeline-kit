@@ -1,0 +1,11 @@
+status,event_name,flow_type,type,target,parametros,description,label,dúvidas
+production,a_fgts_subheader_fgts/proposals,FGTS,,,,"Botão ""Propostas""",,
+production,a_fgts_subheader_fgts/commissions,FGTS,,,,"Botão 'Comissões""",,
+production,a_fgts_subheader_fgts/consulta-offiline,FGTS,,,,"Botão ""Consulta Offiline""",,Sidebar?
+production,banner_fgts-pending-customer-proposals-alert,FGTS,,,,Caixinha de propostas pendentes,,Tela de sucesso ou sidebar?
+mapping,a_fgts_detalhe_proposta,FGTS,,,"proposalId
+proposalStatus","Botão ""Ver Proposta""",,Botão de avançar para o cadastro?
+production,button_fgts-pending-customer-proposals-send-link-whatsapp,FGTS,,,,Botão de WhatsApp na tabela de propostas em FGTS,,
+mapping,button_fgts_proposals-export,FGTS,,,,"Botão de ""Exportar""",,
+mapping,button_fgts_consulta-offline_consultar,FGTS,,,,"Botão ""Consultar"" em Consulta Offline",,
+production,a_fgts_subheader_fgts/new,FGTS,,,,"Botão ""Nova Proposta"" em FGTS",,Qual erro está sendo mapeado?

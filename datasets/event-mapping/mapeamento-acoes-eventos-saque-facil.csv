@@ -1,0 +1,66 @@
+status,event_name,flow_type,type,target,parametros,description,label,notes
+production,a_cc_subheader_credit-card/proposals,Saque Fácil - Header,,,,"Botão ""Propostas""",,
+mapping,button_saquefacil_proposals-export,Saque Fácil - Header,,,,"Botão ""Exportar"" na tabela de propostas",,
+production,a_cc_subheader_credit-card/commissions,Saque Fácil - Header,,,,,,
+production,a_banner_dashboard_giro_roleta,Saque Fácil - Header,,,,Banner da roleta premiada,,Deveria ser: a_banner_saquefacil_roleta_premiada
+production,a_cc_subheader_credit-card/new,Saque Fácil - Header,,,,"Botão ""Nova Proposta""",,
+production,saquefacil_tela_nova_proposta,Saque Fácil - Consulta,javascript,sendGAEvent,,Menu: Nova proposta,,
+production,saquefacil_tela_lista_propostas,Saque Fácil - Consulta,javascript,sendGAEvent,,Menu: Página de lista das propostas,,
+production,saquefacil_tela_detalhe_proposta,Saque Fácil - Consulta,javascript,sendGAEvent,"proposalId
+proposalStatus",Abre página de detalhe da proposta,,
+production,saquefacil_copiar_link_proposta,Saque Fácil - Consulta,eventId,<button>,,Botão de link da proposta,,
+production,saquefacil_alterar_dados_proposta,Saque Fácil - Proposta,eventId,<button>,,Botão de alterar dados da proposta,,
+production,saquefacil_nova_pendencia_proposta,Saque Fácil - Proposta,eventId,<button>,,,,
+production,saquefacil_aprovar_proposta,Saque Fácil - Proposta,eventId,<button>,,,,Tela de sucesso?
+production,saquefacil_reprovar_proposta,Saque Fácil - Proposta,eventId,<button>,,,,Tela de insucesso?
+production,saquefacil_proposta_tab,Saque Fácil - Proposta,javascript,<button>,tab,Abas de detalhes da proposta,,
+production,saquefacil_abrir_proposta,Saque Fácil - Consulta,eventId,<a>,,,,
+production,saquefacil_filtro_propostas,Saque Fácil - Consulta,javascript,<button>,filters,,,
+production,saquefacil_paginacao_propostas,Saque Fácil - Consulta,javascript,<button>,page,,,
+production,saquefacil_criar_proposta,Saque Fácil - Consulta,javascript,<button>,proposalId,Cadastro da proposta,,Sidebar?
+production,saquefacil_ver_proposta,Saque Fácil - Consulta,javascript,<button>,proposalId,Ver proposta cadastrada,,Tela de sucesso ou sidebar?
+production,saquefacil_nova_proposta,Saque Fácil - Consulta,javascript,<button>,,Nova proposta na tela de proposta cadastrada,,Tela de sucesso ou sidebar?
+production,saquefacil_confirmar_simulacao,Saque Fácil - Nova Proposta - Simulação,javascript,<button>,"periodos_selecionado
+tabela_selecionada
+tabela_padrao","Simulação aceita, ir para dados pessoais",,Botão de avançar para o cadastro?
+production,saquefacil_abrir_guia,Saque Fácil - Nova Proposta - Simulação,eventId,data-eventId,,Inicia onboarding,,
+production,saquefacil_consultar_cpf,Saque Fácil - Nova Proposta - Simulação,javascript,,cpf,CPF Inserido,,
+production,saquefacil_consultar_simulacao,Saque Fácil - Nova Proposta - Simulação,javascript,,,Valor da simulação inserido -> Avançar,,
+production,saquefacil_simulation_error,Saque Fácil - Nova Proposta - Simulação,javascript,sendGAEvent,"error_code
+error_message
+cpf",,,Qual erro está sendo mapeado?
+production,saquefacil_simulation_table_change,Saque Fácil - Nova Proposta - Simulação,javascript,<button>,"table_id, table_label",Troca entre tabelas,,
+production,saquefacil_simulation_installment_change,Saque Fácil - Nova Proposta - Simulação,javascript,<button>,installments,,,Troca de parcela?
+production,saquefacil_simulation_voltar,Saque Fácil - Nova Proposta - Simulação,eventId,<button>,,Voltar p/ CPF,,
+production,saquefacil_simulation_continuar,Saque Fácil - Nova Proposta - Simulação,eventId,<button>,,Seguir p/ cadastro,,
+production,saquefacil_tour_${action},Saque Fácil - Nova Proposta - Simulação,eventId,<button>,,,,
+production,saquefacil_aceite_termos,,javascript,page-view,accepted,Tomador clicou no checkbox de aceite de termos,,
+production,button_saquefacil-nova-proposta_com-limite,Saque Fácil - Nova Proposta - Simulação,eventId,<button>,,Possui limite do cartão de crédito? Sim,,
+production,button_saquefacil-nova-proposta_sem-limite,,eventId,<button>,,Possui limite do cartão de crédito? Não,,
+deleted,,Saque Fácil - Nova Proposta - Simulação,eventId,<button>,,Quanto de limite seu cliente possui no cartão de crédito hoje? Positivo,,
+deleted,,,eventId,<button>,,Quanto de limite seu cliente possui no cartão de crédito hoje? Negativo,,
+production,button_saquefacil-nova-proposta_voltar-cpf,Saque Fácil - Nova Proposta - Simulação,eventId,<button>,,Inserção CPF Voltar,,
+production,button_saquefacil-nova-proposta_proximo-passo-valor,,eventId,<button>,,Simulação Avançar,,
+production,button_saquefacil-nova-proposta_voltar-valor,,eventId,<button>,,Simulação Voltar,,
+production,button_saquefacil-nova-proposta_avancar-dados-pessoais,Saque Fácil - Nova Proposta - Cadastro,eventId,<button>,,Dados cadastrais Avançar,,
+production,,Saque Fácil - Nova Proposta - Cadastro,eventId,<button>,,Dados cadastrais Voltar,,
+mapping,,,,,,Tipo de cartão que será utilizado,Tipo de cartão que será utilizado,
+mapping,,,,,,Dia do vencimento do cartão,Dia do vencimento do cartão,
+production,button_saquefacil-nova-proposta_avancar-dados-endereco,Saque Fácil - Nova Proposta - Cadastro,eventId,<button>,,Endereço Avançar,,
+mapping,,Saque Fácil - Nova Proposta - Cadastro,eventId,<button>,,Endereço Voltar,,
+mapping,,Saque Fácil - Nova Proposta - Cadastro,eventId,<button>,,Dados bancarios Avançar,,
+mapping,,Saque Fácil - Nova Proposta - Cadastro,eventId,<button>,,Dados bancarios Voltar,,
+mapping,,Saque Fácil - Nova Proposta - Cadastro,eventId,<button>,,Conta bancária corrigir,,
+mapping,,Saque Fácil - Nova Proposta - Cadastro,eventId,<button>,,Conta bancária correta,,
+mapping,,Saque Fácil - Proposta,eventId,<button>,,Cancelar proposta,Cancelar,
+production,saque_facil_info_modal_whatsapp_button_click,Dashboard,javascript,page-view,manager_phone_number,Modal de novidade - Falar com o gerente,,
+production,saque_facil_info_modal_maybe_later_button_click,Dashboard,javascript,page-view,,Modal de novidade - Talvez mais tarde,,
+production,saque_facil_info_modal_go_to_saque_facil_button_click,Dashboard,javascript,page-view,,Modal de novidade - Ir para o Saque Fácil,,
+not simulated,button_saquefacil-nova-proposta_nova-proposta,Saque Fácil - Consulta,eventId,<button>,,Possui limite do cartão de crédito? Não -> Não é possível seguir com a proposta,,
+not simulated,button_saquefacil-nova-proposta_novo-cartao,Saque Fácil - Consulta,eventId,<button>,,Não é possível seguir com a proposta - <button>Utilizar outro cartão</button>,,
+production,button_saquefacil-checkout-v2_avancar-inicial,Saque Fácil - Tomador - Simulação,eventId,<button>,,"Onboarding ""Começar a compra""",,
+production,button_saquefacil-checkout-v2_avancar-como-funciona,Saque Fácil - Tomador - Simulação,eventId,<button>,,"Como funciona ""Estou de acordo""",,
+production,button_saquefacil-checkout-v2_avancar-confirmacao-titular,Saque Fácil - Tomador - Simulação,eventId,<button>,,Confirmação de titularidade,,
+production,button_saquefacil-checkout-v2_avancar-pagamento,Saque Fácil - Tomador - Aceite,eventId,<button>,,"Inserção do cartão ""Avançar""",,
+production,button_saquefacil-checkout-v2_avancar-aceite,Saque Fácil - Tomador - Aceite,eventId,<button>,,Aceite de termo,,
+production,saquefacil_aceite_termos,Saque Fácil - Tomador - Aceite,,,accepted: true,"Checkbox de aceite (está implementado errado, deve disparar após a troca de tela)",,
