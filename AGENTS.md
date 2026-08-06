@@ -36,24 +36,22 @@ Os workflows abaixo estão carregados no contexto desta sessão via `opencode.js
 
 Os projetos ficam em `~/projects/`. Cada projeto tem sua própria pasta com briefings, insumos e outputs. O orquestrador deve sempre perguntar qual projeto está ativo no início de uma sessão se não estiver claro.
 
-## Jira board flow (AIDESIGN <-> AIPRODUCT)
+## Jira board flow (AIPRODUCT, 18 colunas)
 
-Use este fluxo para todas as issues vinculadas ao processo `AIPRODUCT-XX <-> AIDESIGN-XX`.
+Único board, sem mais split AIDESIGN/AIPRODUCT. Fluxo completo e tabelas de responsabilidade em [docs/FLUXO-JIRA-AIPRODUCT.md](docs/FLUXO-JIRA-AIPRODUCT.md).
 
-1. PM registra os Épicos em `AIPRODUCT`.
-2. Design trabalha os cards no `AIDESIGN`, sempre vinculados ao Épico correspondente em `AIPRODUCT`.
-3. No `AIDESIGN`, o fluxo de design permanece:
-   - `Itens Pendentes` (11) -> `Revisão Design` (4) -> `Aguardando Aprovação` (2) -> `Revisão Product` (3) -> `TODO` (5) -> `Em andamento` (21) -> `Team Review` (6) -> `Itens concluídos` (31)
-4. Ao chegar em `Itens concluídos (Done)` no `AIDESIGN`, os agentes de design encerram a atuação nesse item.
-5. A operação no `AIPRODUCT` backlog após Done do Design é responsabilidade do PM/PO (sem ação automática dos agentes de design).
+- Fase Discovery (Product Designer + PM): `User Needs` -> `Revisão Design` -> `Aguardando Aprovação` -> `Product Review` -> `To Prototype` -> `Prototype Review` -> `Journey Spec` -> `Grooming` -> `Technical Design`
+- Fase Downstream (PO + Developers + PM): `Product Shape` -> `Refinement` -> `Backlog` -> `To Do` -> `Doing` -> `QA` -> `Done` -> `Released` -> `Monitoramento`
+- `Technical Design` alimenta `Product Shape`: o PO cria a User Story a partir do Journey Spec aprovado.
+- Os agentes de design atuam na fase Discovery; a partir de `Product Shape` a operação é responsabilidade de PO/Developers (sem ação automática dos agentes de design).
 
 ## Jira handoff rules for agents
 
 - Sempre manter a documentação atualizada na issue Jira correspondente antes de mudar status.
 - Ao atualizar descrição/comentário de issue no Jira com conteúdo de arquivo `.md`, colar o conteúdo completo no Jira (ou um resumo estruturado com contexto suficiente) em vez de inserir apenas caminho local.
 - Nunca usar caminhos locais (ex.: `/home/...`, `~/...`) como substituto de conteúdo em Jira, pois não são acessíveis para outras pessoas.
-- Nunca mover uma issue diretamente para `Itens concluídos`; deve passar por `Team Review`.
-- Quando houver etapa de revisão exclusivamente humana, os agentes devem parar na coluna anterior e deixar o handoff pronto.
-- Em itens com mudanca de jornada/tela, anexar ou linkar o `journey-spec.md` antes de mover para `Revisão Product`.
-- Toda issue de `AIDESIGN` deve manter vínculo explícito com o Épico correto de `AIPRODUCT`.
-- Não criar ou mover issue em `AIPRODUCT` sem solicitação explícita de PM/PO.
+- Nunca mover uma issue diretamente de `Doing` para `Done`; deve passar por `QA`.
+- Quando houver etapa de revisão exclusivamente humana (ex.: `Product Review` pelo PM), os agentes devem parar na coluna anterior e deixar o handoff pronto.
+- Em itens com mudança de jornada/tela, anexar ou linkar o `journey-spec.md` antes de mover a issue de `Journey Spec` para `Grooming`.
+- Toda issue deve manter vínculo explícito com o Épico correspondente.
+- Não criar ou mover User Story em `Product Shape` sem solicitação explícita do PO.

@@ -9,6 +9,7 @@ Pacote pronto para compartilhar seus agentes, skills e workflows de UX no OpenCo
 | Guia | Descrição |
 |------|-----------|
 | [Guia do Pipeline](docs/GUIA-PIPELINE.md) | Arquitetura, workflows, Jira flow, regras operacionais |
+| [Fluxo Jira AIPRODUCT](docs/FLUXO-JIRA-AIPRODUCT.md) | Board de 18 colunas, issue types e quem move cada coluna |
 | [Uso Diário](docs/USO-DIARIO.md) | Fluxos mais comuns, como escolher agentes, checklist |
 | [Catálogo](docs/CATALOGO-AGENTES-SKILLS.md) | O que cada agente e skill faz |
 | [Nota: repo research-agents (João)](docs/NOTA-RESEARCH-AGENTS-JOAO.md) | Diagnóstico do repo incompleto e o que foi recuperado |
