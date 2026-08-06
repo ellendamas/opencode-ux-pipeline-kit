@@ -1,5 +1,10 @@
 # Changelog
 
+## [2026-08-06] - Nota de diagnóstico: repo research-agents (João) incompleto
+
+### Added
+- `docs/NOTA-RESEARCH-AGENTS-JOAO.md`: registro formal do diagnóstico do repositório `github.com/jpsantos-taya/research-agents` — confirma via clone direto do GitHub que os 11 agentes de pesquisa e os 3 templates Python nunca foram commitados, e detalha o que o repo tem de fato (CLAUDE.md, artefatos de 4 projetos, diagramas, lista de participantes) para orientar quem for reutilizá-lo.
+
 ## [2026-08-06] - Skill agent-diagram e persona corban (origem: repo de ex-colaborador)
 
 ### Added
