@@ -53,6 +53,10 @@ if [[ -d "$TARGET_DIR/datasets" ]]; then
   cp -R "$TARGET_DIR/datasets" "$BACKUP_DIR/datasets"
 fi
 
+if [[ -d "$TARGET_DIR/personas" ]]; then
+  cp -R "$TARGET_DIR/personas" "$BACKUP_DIR/personas"
+fi
+
 if [[ -f "$TARGET_DIR/AGENTS.md" ]]; then
   cp "$TARGET_DIR/AGENTS.md" "$BACKUP_DIR/AGENTS.md"
 fi
@@ -62,7 +66,7 @@ if [[ -f "$TARGET_DIR/opencode.json" ]]; then
 fi
 
 echo "==> Instalando pacote no OpenCode"
-mkdir -p "$TARGET_DIR/agents" "$TARGET_DIR/skills" "$TARGET_DIR/workflows" "$TARGET_DIR/templates" "$TARGET_DIR/prompts" "$TARGET_DIR/datasets"
+mkdir -p "$TARGET_DIR/agents" "$TARGET_DIR/skills" "$TARGET_DIR/workflows" "$TARGET_DIR/templates" "$TARGET_DIR/prompts" "$TARGET_DIR/datasets" "$TARGET_DIR/personas"
 
 if [[ "$NO_OVERWRITE" == "true" ]]; then
   echo "==> Modo complementar ativo: nao sobrescrever arquivos existentes"
@@ -72,6 +76,7 @@ if [[ "$NO_OVERWRITE" == "true" ]]; then
   rsync -a --ignore-existing "$SRC_DIR/templates/" "$TARGET_DIR/templates/"
   rsync -a --ignore-existing "$SRC_DIR/prompts/" "$TARGET_DIR/prompts/"
   rsync -a --ignore-existing "$SRC_DIR/datasets/" "$TARGET_DIR/datasets/"
+  rsync -a --ignore-existing "$SRC_DIR/personas/" "$TARGET_DIR/personas/"
 
   if [[ -f "$TARGET_DIR/AGENTS.md" ]]; then
     echo "==> AGENTS.md ja existe, mantendo o arquivo atual"
@@ -85,6 +90,7 @@ else
   cp -R "$SRC_DIR/templates/." "$TARGET_DIR/templates/"
   cp -R "$SRC_DIR/prompts/." "$TARGET_DIR/prompts/"
   cp -R "$SRC_DIR/datasets/." "$TARGET_DIR/datasets/"
+  cp -R "$SRC_DIR/personas/." "$TARGET_DIR/personas/"
   cp "$SRC_DIR/AGENTS.md" "$TARGET_DIR/AGENTS.md"
 fi
 
@@ -108,6 +114,7 @@ SKILL_COUNT="$(ls -1 "$TARGET_DIR/skills"/*/SKILL.md 2>/dev/null | wc -l | tr -d
 TEMPLATE_COUNT="$(ls -1 "$TARGET_DIR/templates"/*.md 2>/dev/null | wc -l | tr -d ' ')"
 PROMPT_COUNT="$(ls -1 "$TARGET_DIR/prompts"/*.md 2>/dev/null | wc -l | tr -d ' ')"
 DATASET_COUNT="$(ls -1 "$TARGET_DIR/datasets/event-mapping"/*.csv 2>/dev/null | wc -l | tr -d ' ')"
+PERSONA_COUNT="$(ls -1 "$TARGET_DIR/personas"/*.md 2>/dev/null | wc -l | tr -d ' ')"
 
 echo ""
 echo "Instalacao concluida com sucesso."
@@ -117,4 +124,5 @@ echo "- Workflows instalados: $WORKFLOW_COUNT"
 echo "- Templates instalados: $TEMPLATE_COUNT"
 echo "- Prompts instalados:   $PROMPT_COUNT"
 echo "- Datasets instalados:  $DATASET_COUNT"
+echo "- Personas instaladas:  $PERSONA_COUNT"
 echo "- Backup salvo em:      $BACKUP_DIR"

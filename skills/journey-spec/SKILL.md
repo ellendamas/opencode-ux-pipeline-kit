@@ -8,6 +8,8 @@ compatibility: opencode
 ## O que esta skill contem
 
 - Template canonico de `journey-spec.md` para novas telas e alteracoes de telas
+- Template de spec de tela `template-spec-tela-trevo-v1.md` para detalhar uma tela isolada
+- Template de mapeamento de eventos `template-eventos-amplitude-v1.md` para a secao Amplitude
 - Blocos obrigatorios para PO/PM agentes e para time de analytics
 - Taxonomia de eventos Amplitude com convencao, propriedades e QA
 - Checklist final de qualidade para evitar handoff incompleto

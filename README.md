@@ -11,6 +11,7 @@ Pacote pronto para compartilhar seus agentes, skills e workflows de UX no OpenCo
 | [Guia do Pipeline](docs/GUIA-PIPELINE.md) | Arquitetura, workflows, Jira flow, regras operacionais |
 | [Uso Diário](docs/USO-DIARIO.md) | Fluxos mais comuns, como escolher agentes, checklist |
 | [Catálogo](docs/CATALOGO-AGENTES-SKILLS.md) | O que cada agente e skill faz |
+| [Nota: repo research-agents (João)](docs/NOTA-RESEARCH-AGENTS-JOAO.md) | Diagnóstico do repo incompleto e o que foi recuperado |
 | [Changelog](CHANGELOG.md) | Histórico de versões e mudanças |
 
 ---
@@ -18,11 +19,12 @@ Pacote pronto para compartilhar seus agentes, skills e workflows de UX no OpenCo
 ## O que vem neste repositório
 
 - `agents/`: 26 agentes especializados (inclui `ux-orchestrator` como agente primário)
-- `skills/`: 22 skills reutilizáveis
+- `skills/`: 23 skills reutilizáveis
 - `workflows/`: 6 workflows operacionais
 - `templates/`: modelos oficiais (ex: Design Brief, avaliação heurística)
 - `prompts/`: prompts operacionais versionados
 - `datasets/`: bases de apoio (ex: mapeamento de eventos)
+- `personas/`: perfis de público-alvo reutilizáveis (ex: canal corban)
 - `AGENTS.md`: regras globais do pipeline
 - `docs/`: guias de operação e mapeamento
 - `CHANGELOG.md`: histórico de mudanças do kit
@@ -86,6 +88,7 @@ git pull
 - `~/.config/opencode/templates/`
 - `~/.config/opencode/prompts/`
 - `~/.config/opencode/datasets/`
+- `~/.config/opencode/personas/`
 - `~/.config/opencode/AGENTS.md`
 
 ## Backup automático

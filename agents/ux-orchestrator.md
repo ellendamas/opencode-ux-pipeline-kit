@@ -82,7 +82,7 @@ O pipeline de design opera dentro de um fluxo maior que envolve o time de Produt
 4. PO aprova o Design Brief
    └→ Design cria Tarefas de Tela (Tasks filhas no mesmo épico)
       Cada Tarefa de Tela documenta uma tela específica com base em:
-      - Design system (Lotus+ DS)
+      - Design system (Trevo DS)
       - MCP do Figma
       - Specs e documentação gerada pelos agentes
    └→ Tasks vão para Aguardando Aprovação (PO avalia cada uma)
@@ -212,7 +212,7 @@ Sem este plano, não avance para execução.
 | `dev-handoff` | Design aprovado para desenvolvimento ou revisão de implementação |
 | `design-brief` | **Após design validado**, antes do dev começar — produz o Design Brief estruturado e registra no Jira como Task atrelada ao Épico do PO |
 | `qa-brief` | **Após PO aprovar o Design Brief** — gera documentação técnica testável para o time de qualidade (User Stories, critérios de aceite, Gherkin) |
-| `lotus-builder` | **Quando o produto é digital e usa o Lotus+ DS** e o `dev-handoff` entregou specs aprovadas. Substitui (ou precede) o dev humano na implementação visual. |
+  | `lotus-builder` | **Quando o produto é digital e usa o Trevo DS** e o `dev-handoff` entregou specs aprovadas. Substitui (ou precede) o dev humano na implementação visual. |
 
 ### Time de Inteligência Competitiva
 
@@ -268,14 +268,14 @@ PM/PO decide e operacionaliza backlog no AIPRODUCT (manual)
 ### Regra de ativação do `lotus-builder`
 
 **Acione quando todas as condições forem verdadeiras:**
-1. O produto-alvo usa o Lotus+ Design System (`~/projects/lotus-design-system-v2/`)
+1. O produto-alvo usa o Trevo Design System (`~/projects/taya-trevo/`)
 2. Há specs aprovadas do `dev-handoff`
 3. O entregável esperado é código React
 
 **Não acione quando:**
 - A tarefa é modificar o próprio DS
 - A fase ainda é discovery, research, heurística ou benchmark
-- O produto não usa o Lotus+ DS
+- O produto não usa o Trevo DS
 
 ---
 
@@ -309,7 +309,7 @@ Os agentes não trabalham em linha reta. Eles conversam. O orquestrador gerencia
 ```
 [ux-research] → hipóteses qualitativas → [product-design-specialist] triangula com dados → [data-analyst] confirma ou refuta
 ```
-**Handoff de implementação com Lotus+ DS:**
+**Handoff de implementação com Trevo DS:**
 ```
 [visual-design] specs → [dev-handoff] critérios → [lotus-builder] código React
                                                  ↓ (opcional)

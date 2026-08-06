@@ -361,7 +361,7 @@ Fonte: [referência ao output do ux-research ou link do arquivo]
 - Estado disabled: [token de cor]
 - Estado loading: [comportamento]
 
-> Se o produto usa Lotus+ DS: use nomes exatos de props CVA (`Button variant="default"`) e indique o `data-theme`.
+> Se o produto usa Trevo DS: use nomes exatos de props CVA (`Button variant="default"`) e indique o `data-theme`.
 
 ---
 
