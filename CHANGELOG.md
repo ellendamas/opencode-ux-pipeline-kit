@@ -1,5 +1,18 @@
 # Changelog
 
+## [2026-08-06] - Novo fluxo Jira: board AIPRODUCT unificado (18 colunas)
+
+### Added
+- `docs/FLUXO-JIRA-AIPRODUCT.md`: documentacao completa do novo fluxo no board [AIPRODUCT (674)](https://taya-team-z4401kjx.atlassian.net/jira/software/projects/AIPRODUCT/boards/674) — 18 colunas divididas em fase Discovery (Product Designer + PM) e fase Downstream (PO + Developers + PM), tabela de issue types e tabela de quem move cada coluna.
+
+### Changed
+- `AGENTS.md`: secao "Jira board flow" reescrita para o board unico de 18 colunas, substituindo o fluxo `AIPRODUCT-XX <-> AIDESIGN-XX`. Regras de handoff atualizadas para os nomes de coluna novos (`QA` no lugar de `Team Review`, `Grooming`/`Journey Spec` no lugar de `Revisão Product`, etc.).
+- `docs/GUIA-PIPELINE.md`: secao 5 (Fluxo Jira) reescrita para as 18 colunas.
+- `agents/ux-orchestrator.md`: fluxo design <-> produto, tabela de status do Jira e regras de ativacao do `design-brief` reescritos para o board unico — o pipeline de design agora encerra o trabalho ativo ao fim de `Technical Design` (era `Itens concluídos` no AIDESIGN).
+
+### Removed
+- Board `AIDESIGN` (8 colunas) como fluxo vigente — descontinuado em favor do board unico `AIPRODUCT`.
+
 ## [2026-08-06] - Nota de diagnóstico: repo research-agents (João) incompleto
 
 ### Added

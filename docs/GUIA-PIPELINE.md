@@ -44,24 +44,39 @@ data-normalizer -> prototype-testing -> ux-pitch
 - Sempre gerar `journey-spec.md` para tela nova/alterada.
 - `journey-spec.md` deve conter taxonomia Amplitude com `event_name` em `snake_case`.
 
-## 5) Fluxo Jira (AIPRODUCT <-> AIDESIGN)
+## 5) Fluxo Jira (board AIPRODUCT, 18 colunas)
 
-Sequencia esperada:
+Board unico, sem mais split AIDESIGN/AIPRODUCT. Detalhamento completo (issue types, quem move cada coluna) em [FLUXO-JIRA-AIPRODUCT.md](FLUXO-JIRA-AIPRODUCT.md).
 
-1. `Itens Pendentes` (11)
-2. `Revisao Design` (4)
-3. `Aguardando Aprovacao` (2)
-4. `Revisao Product` (3)
-5. `TODO` (5)
-6. `Em andamento` (21)
-7. `Team Review` (6)
-8. `Itens concluidos` (31)
+Fase Discovery (Product Designer + PM):
+
+1. `User Needs`
+2. `Revisao Design`
+3. `Aguardando Aprovacao`
+4. `Product Review`
+5. `To Prototype`
+6. `Prototype Review`
+7. `Journey Spec`
+8. `Grooming`
+9. `Technical Design`
+
+Fase Downstream (PO + Developers + PM):
+
+10. `Product Shape`
+11. `Refinement`
+12. `Backlog`
+13. `To Do`
+14. `Doing`
+15. `QA`
+16. `Done`
+17. `Released`
+18. `Monitoramento`
 
 Regras:
 
-- Nao pular direto para `Itens concluidos`.
-- Em mudanca de tela/jornada, anexar `journey-spec.md` antes de `Revisao Product`.
-- Nao criar ou mover issues no `AIPRODUCT` sem solicitacao explicita de PM/PO.
+- Nao pular direto de `Doing` para `Done`; deve passar por `QA`.
+- Em mudanca de tela/jornada, anexar `journey-spec.md` antes de mover de `Journey Spec` para `Grooming`.
+- Nao criar ou mover User Story em `Product Shape` sem solicitacao explicita do PO.
 
 ## 6) Estrutura de artefatos de apoio
 

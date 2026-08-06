@@ -64,56 +64,39 @@ Diga exatamente isto:
 
 ## Contexto Operacional — Fluxo com o Time de Produto
 
-O pipeline de design opera dentro de um fluxo maior que envolve o time de Produto (PO e PM), que roda seus próprios agentes focados em negócio. O orquestrador precisa conhecer esse fluxo para saber em qual etapa o design está e quando o pipeline entra em espera.
+O pipeline de design opera dentro de um único board Jira (AIPRODUCT, 18 colunas) que também cobre PO, PM e Developers. O orquestrador precisa conhecer esse fluxo para saber em qual etapa o design está e quando o pipeline entra em espera. Detalhamento completo (issue types, quem move cada coluna) em [docs/FLUXO-JIRA-AIPRODUCT.md](../docs/FLUXO-JIRA-AIPRODUCT.md).
 
 ### Fluxo completo design ↔ produto
 
 ```
-1. PM cria Épico no AIPRODUCT
-   └→ PO aciona o pipeline de Design no AIDESIGN
+1. PM cria o Épico (Epic)
+   └→ Alimenta `User Needs`, primeira coluna da fase Discovery
 
-2. Design cria/usa o Épico correspondente no AIDESIGN
-   └→ É obrigatório manter vínculo explícito com o Épico de origem no AIPRODUCT
+2. design-brief entrega o Design Brief (Tarefa, nasce em `User Needs`)
+   └→ `User Needs` -> `Revisão Design` -> `Aguardando Aprovação` -> `Product Review`
+   └→ Em `Product Review`, o PM aprova ou rejeita o Design Brief
 
-3. Design trabalha autonomamente no AIDESIGN
-   └→ design-brief entrega o Design Brief
-   └→ Task vai para Aguardando Aprovação (PO avalia)
+3. Design Brief aprovado
+   └→ `To Prototype`: Product Designer cria o Protótipo (Tarefa)
+   └→ `Prototype Review` -> `Journey Spec`: Product Designer cria o Journey Spec (Tarefa)
+   └→ `Grooming`: Product Designer + Developers alinham viabilidade
+   └→ `Technical Design`: Tech Lead cria o Doc. de Arquitetura (Tarefa)
 
-4. PO aprova o Design Brief
-   └→ Design cria Tarefas de Tela (Tasks filhas no mesmo épico)
-      Cada Tarefa de Tela documenta uma tela específica com base em:
-      - Design system (Trevo DS)
-      - MCP do Figma
-      - Specs e documentação gerada pelos agentes
-   └→ Tasks vão para Aguardando Aprovação (PO avalia cada uma)
+4. Agentes de design encerram o trabalho ativo ao final de `Technical Design`
+   └→ Sem ação automática na fase Downstream sem solicitação explícita de PO/PM
 
-5. PO aprova cada Tarefa de Tela
-   └→ Design conclui o fluxo no AIDESIGN até Itens concluídos (Done)
-   └→ Agentes de design param aqui (sem ação automática no AIPRODUCT)
-
-6. PM/PO operacionaliza o AIPRODUCT
-   └→ Se necessário, cria/move item para Backlog no AIPRODUCT
-   └→ Esta etapa é manual e fora do escopo dos agentes de design
-
-7. PM revisa resultado e decide se avança para DEM
-   └→ Se sim: dev começa, dev-handoff pode ser acionado
-   └→ Se não: pipeline permanece em espera
+5. PO cria a User Story em `Product Shape` a partir do Journey Spec aprovado
+   └→ `Refinement` -> `Backlog` -> `To Do` -> `Doing` (Developers, dev-handoff/lotus-builder podem ser acionados aqui)
+   └→ `QA` -> `Done` -> `Released` -> `Monitoramento` (PM revisa impacto vs. KPIs)
 ```
 
-**O pipeline de design encerra seu trabalho ativo no passo 5.** Após os cards chegarem em `Itens concluídos (Done)` no AIDESIGN, o orquestrador entra em modo de espera e não aciona ações no AIPRODUCT sem solicitação explícita de PM/PO.
+**O pipeline de design encerra seu trabalho ativo ao fim da fase Discovery (`Technical Design`).** A partir de `Product Shape`, a operação é responsabilidade de PO/Developers — o orquestrador entra em modo de espera e não aciona ações na fase Downstream sem solicitação explícita de PM/PO.
 
 ---
 
-### Status do Jira — projeto AIDESIGN
+### Regra de transição
 
-| ID | Status | Quando usar |
-|----|--------|-------------|
-| `11` | Itens Pendentes (Backlog) | Task criada, ainda não iniciada |
-| `21` | Em andamento (Sendo feito) | Design está trabalhando ativamente |
-| `2` | Aguardando Aprovação | Entregue ao PO — aguardando retorno |
-| `31` | Itens concluídos (Concluído) | Fluxo de design encerrado |
-
-**Regra de transição:** o agente `design-brief` é o único responsável por mover Tasks de Design Brief. Tarefas de Tela seguem o mesmo padrão de status no AIDESIGN. Agentes de design não criam nem movem issues no AIPRODUCT sem pedido explícito de PM/PO.
+O agente `design-brief` é o único responsável por mover a issue de Design Brief pela fase Discovery. Agentes de design não criam nem movem User Story em `Product Shape` (ou qualquer coluna Downstream) sem pedido explícito de PM/PO.
 
 ---
 
@@ -233,9 +216,7 @@ Sem este plano, não avance para execução.
 ### Fluxo padrão quando há Épico no Jira
 
 ```
-PO cria Épico (problema definido)
-  ↓
-PO/PM mantém Épico no AIPRODUCT e Design vincula o Épico correspondente no AIDESIGN
+PM cria Épico (problema definido) → alimenta `User Needs`
   ↓
 Orquestrador lê contexto via MCP atlassian-rovo
   ↓
@@ -245,11 +226,11 @@ Orquestrador lê contexto via MCP atlassian-rovo
   ↓
 [heuristic-evaluator] → QA (opcional)
   ↓
-[design-brief] → Design Brief estruturado + Task no Jira
+[design-brief] → Design Brief estruturado + Task em `User Needs`
   ↓
-PO valida e Design conclui cards no AIDESIGN
+PM valida em `Product Review` e Design segue até `Technical Design`
   ↓
-PM/PO decide e operacionaliza backlog no AIPRODUCT (manual)
+PO cria User Story em `Product Shape` (manual, fase Downstream)
   ↓
 [dev-handoff] / [lotus-builder] apenas quando PM/PO solicitar continuidade
 ```
@@ -263,7 +244,7 @@ PM/PO decide e operacionaliza backlog no AIPRODUCT (manual)
 **Não acione quando:**
 - Ainda há decisões de design em aberto
 - O projeto não tem Jira ou o PO não usa esse fluxo
-- O design já foi concluído no AIDESIGN e não houve solicitação explícita de PM/PO para avançar no AIPRODUCT
+- O design já concluiu a fase Discovery (`Technical Design`) e não houve solicitação explícita de PM/PO para avançar na fase Downstream
 
 ### Regra de ativação do `lotus-builder`
 
