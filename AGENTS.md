@@ -14,6 +14,7 @@ Este é um pipeline de UX Design com 12 agentes especialistas e 12 skills de con
 - Ao final de qualquer sessão de trabalho, proponha salvar um resumo do que foi produzido
 - Sempre que houver nova tela ou tela alterada, gerar `journey-spec.md` usando a skill global `journey-spec`
 - `journey-spec.md` deve incluir secao obrigatoria de taxonomia Amplitude com `event_name` em `snake_case`
+- Quando o entregavel for uma spec de tela ou um mapeamento de eventos, usar os templates oficiais em `scenario-testing/insumos/outputs/AIPRODUCT-11/` como fonte de partida
 
 ## Workflows Disponíveis
 
@@ -49,6 +50,8 @@ Use este fluxo para todas as issues vinculadas ao processo `AIPRODUCT-XX <-> AID
 ## Jira handoff rules for agents
 
 - Sempre manter a documentação atualizada na issue Jira correspondente antes de mudar status.
+- Ao atualizar descrição/comentário de issue no Jira com conteúdo de arquivo `.md`, colar o conteúdo completo no Jira (ou um resumo estruturado com contexto suficiente) em vez de inserir apenas caminho local.
+- Nunca usar caminhos locais (ex.: `/home/...`, `~/...`) como substituto de conteúdo em Jira, pois não são acessíveis para outras pessoas.
 - Nunca mover uma issue diretamente para `Itens concluídos`; deve passar por `Team Review`.
 - Quando houver etapa de revisão exclusivamente humana, os agentes devem parar na coluna anterior e deixar o handoff pronto.
 - Em itens com mudanca de jornada/tela, anexar ou linkar o `journey-spec.md` antes de mover para `Revisão Product`.

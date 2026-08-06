@@ -29,7 +29,7 @@
 - `design-brief`: gera Design Brief e registra no Jira.
 - `qa-brief`: converte Design Brief aprovado em criterios testaveis para QA.
 - `dev-handoff`: redlines, criterios visuais e documentacao para dev.
-- `lotus-builder`: implementacao React com Lotus+ Design System.
+- `lotus-builder`: implementacao React com Trevo Design System.
 - `frontend-specialist`: transforma prototipo em UI React/TS pronta para producao.
 
 ### Inteligencia competitiva e relatorios

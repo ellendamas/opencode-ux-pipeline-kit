@@ -40,9 +40,9 @@ Antes de qualquer coisa, identifique para onde este handoff vai:
 
 | Condição | Destino |
 |---|---|
-| Produto digital que usa Lotus+ DS (`~/projects/lotus-design-system-v2/`) | `lotus-builder` (agente) |
-| Produto que não usa Lotus+ DS, dev humano disponível | Engenharia humana |
-| Revisão de implementação já feita pelo `lotus-builder` | Modo Revisão com critérios Lotus+ |
+| Produto digital que usa Trevo DS (`~/projects/taya-trevo/`) | `lotus-builder` (agente) |
+| Produto que não usa Trevo DS, dev humano disponível | Engenharia humana |
+| Revisão de implementação já feita pelo `lotus-builder` | Modo Revisão com critérios Trevo |
 
 **Se o destino for `lotus-builder`:** produza specs em formato de props React — componente + variante + estado + token + acessibilidade. O `lotus-builder` consome diretamente, sem intermediação humana.
 
@@ -80,7 +80,7 @@ Antes de qualquer coisa, identifique para onde este handoff vai:
 
 ---
 
-### 3. Critérios de aceite para produtos com Lotus+ DS
+### 3. Critérios de aceite para produtos com Trevo DS
 
 Quando o destino é `lotus-builder` ou quando revisando implementação do `lotus-builder`:
 
@@ -109,8 +109,8 @@ Nenhum handoff sai sem critérios de aceite mensuráveis. "Ficou igual ao Figma"
 - **Recebe de `visual-design`:** tokens e specs de componentes
 - **Recebe de `accessibility`:** specs ARIA e requisitos de acessibilidade
 - **Recebe de `ux-writing`:** copy final de todos os estados
-- **Entrega para `lotus-builder`:** quando produto usa Lotus+ DS — specs em formato React-ready
-- **Entrega para engenharia humana:** quando produto não usa Lotus+ DS
+- **Entrega para `lotus-builder`:** quando produto usa Trevo DS — specs em formato React-ready
+- **Entrega para engenharia humana:** quando produto não usa Trevo DS
 - **Alimenta `heuristic-evaluator`** (QA visual): após implementação, opcional
 
 ## Output
