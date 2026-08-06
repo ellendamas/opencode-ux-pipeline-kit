@@ -18,11 +18,12 @@ Pacote pronto para compartilhar seus agentes, skills e workflows de UX no OpenCo
 ## O que vem neste repositório
 
 - `agents/`: 26 agentes especializados (inclui `ux-orchestrator` como agente primário)
-- `skills/`: 22 skills reutilizáveis
+- `skills/`: 23 skills reutilizáveis
 - `workflows/`: 6 workflows operacionais
 - `templates/`: modelos oficiais (ex: Design Brief, avaliação heurística)
 - `prompts/`: prompts operacionais versionados
 - `datasets/`: bases de apoio (ex: mapeamento de eventos)
+- `personas/`: perfis de público-alvo reutilizáveis (ex: canal corban)
 - `AGENTS.md`: regras globais do pipeline
 - `docs/`: guias de operação e mapeamento
 - `CHANGELOG.md`: histórico de mudanças do kit
@@ -86,6 +87,7 @@ git pull
 - `~/.config/opencode/templates/`
 - `~/.config/opencode/prompts/`
 - `~/.config/opencode/datasets/`
+- `~/.config/opencode/personas/`
 - `~/.config/opencode/AGENTS.md`
 
 ## Backup automático

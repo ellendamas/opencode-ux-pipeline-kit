@@ -1,5 +1,16 @@
 # Changelog
 
+## [2026-08-06] - Skill agent-diagram e persona corban (origem: repo de ex-colaborador)
+
+### Added
+- `skills/agent-diagram/`: skill para gerar diagramas de sistemas multi-agente em draw.io e visualizacoes inline (com `references/patterns.md` e `references/drawio-template.md`).
+- `personas/corban.md`: persona de correspondente bancario (canal corban), reutilizavel por agentes de pesquisa, copy e content-strategy.
+- `personas/README.md`: guia de como criar e usar personas.
+- Suporte a `personas/` no `install.sh` (backup, instalacao com e sem `--no-overwrite`, contagem no resumo final).
+
+### Notes
+- Material recebido de um repositorio de pesquisa UX (`research-agents`) mantido por um colaborador que deixou a empresa. O download nao incluia as pastas `.claude/agents/` e `.opencode/scripts/`, entao os 11 agentes do pipeline de pesquisa (`ux-orchestrator`, `ux-planner`, `ux-screener`, `ux-discussion-guide`, `ux-survey-designer`, `ux-critic`, `ux-notetaker`, `ux-packager`, `ux-forms-publisher`, `ux-synthesis`, `ux-reporter`) nao puderam ser recuperados — apenas a skill `agent-diagram`, a persona `corban` e os artefatos de projetos ja executados. Reconstrucao desses agentes fica pendente para uma sessao futura, caso necessario.
+
 ## [2026-08-06] - Rebranding Lotus+ para Trevo Design System
 
 ### Changed

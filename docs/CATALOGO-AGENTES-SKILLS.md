@@ -40,7 +40,7 @@
 - `report-generator`: gera relatorios profissionais com tabelas/graficos.
 - `report-to-pdf`: converte relatorio markdown para PDF/DOCX com branding.
 
-## Skills (22)
+## Skills (23)
 
 ### UX core
 
@@ -81,6 +81,14 @@
 ### Colaboracao
 
 - `facilitation-playbook`: metodos praticos para workshops e convergencia.
+
+### Documentacao de arquitetura
+
+- `agent-diagram`: gera diagramas de sistemas multi-agente em draw.io e visualizacoes inline.
+
+## Personas
+
+- `corban`: perfil de correspondente bancario (canal corban) para adaptar tom e linguagem de agentes de pesquisa, copy e content-strategy.
 
 ## Workflows mapeados
 
